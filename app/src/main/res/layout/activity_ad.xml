@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/menu_ad" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:textStyle="bold"
+            android:layout_margin="8dp"
+            android:id="@+id/tvTimer"
+            android:text="00:00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"/>
+
+        <RelativeLayout
+            android:id="@+id/rlMenu"
+            android:layout_width="500dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            >
+
+            <RelativeLayout
+                android:id="@+id/rlExit"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                >
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_centerVertical="true"
+                android:id="@+id/rlAd1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_toStartOf="@+id/rlOrient"
+                android:layout_toLeftOf="@+id/rlOrient"
+                >
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlOrient"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_centerInParent="true"
+                >
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/rlOrient"
+                android:layout_toEndOf="@+id/rlOrient"
+                android:id="@+id/rlAd2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                >
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
