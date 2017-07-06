@@ -1,77 +1,53 @@
 package appwork.almayce.pencilpuzzle.presenter;
 
-import android.os.AsyncTask;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import appwork.almayce.pencilpuzzle.App;
-import appwork.almayce.pencilpuzzle.model.sound.Sounds;
+import appwork.almayce.pencilpuzzle.SchedulersTransformer;
 import appwork.almayce.pencilpuzzle.view.CharView;
+import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by almayce on 09.06.17.
  */
 @InjectViewState
 public class CharPresenter extends MvpPresenter<CharView> {
-    AsyncTask<Void, Sounds, Void> asyncTask = new AsyncTask<Void, Sounds, Void>() {
 
-        List<Sounds> soundsList = new ArrayList<>();
-
-        @Override
-        protected void onPreExecute() {
-            soundsList.add(Sounds.well_done);
-            soundsList.add(Sounds.well_done_voice1);
-            soundsList.add(Sounds.try_again);
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            for (int o = 0; o < soundsList.size(); o++) {
-                if (!App.isCancelled) {
-                    publishProgress(soundsList.get(o));
-                    waitSecond();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(Sounds... values) {
-            getViewState().playSound(values[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            if (!App.isCancelled)
-            getViewState().restartActivity();
-
-        }
-
-        @Override
-        protected void onCancelled() {
-        }
-    };
+    private Disposable disposable;
 
     public void onDone() {
-        asyncTask.execute();
+        App.isDone = true;
+        disposable = Observable.interval(1, TimeUnit.MILLISECONDS)
+                .compose(new SchedulersTransformer<>())
+                .subscribe(aLong -> {
+                    if (aLong == 1)
+                        App.playSound("well_done");
+                    if (aLong == 1000)
+                        App.playSound("well_done_voice1");
+                    if (aLong == 2000)
+                        App.playSound("try_again");
+                    if (aLong == 2500)
+                        getViewState().restartActivity();
+                    if (App.isCancelled || aLong > 3000)
+                        disposable.dispose();
+                });
+    }
+
+    public void playSound(String name) {
+        App.playSound(name);
+    }
+
+    public void stopSound() {
+        App.stopSound();
     }
 
     public void onClickExit() {
+        App.stopSound();
         App.isCancelled = true;
         getViewState().backToMainActivity();
     }
-
-    private void waitSecond() {
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

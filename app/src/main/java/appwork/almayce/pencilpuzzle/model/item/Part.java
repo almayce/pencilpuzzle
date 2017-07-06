@@ -5,19 +5,32 @@ package appwork.almayce.pencilpuzzle.model.item;
  */
 
 public class Part {
-    private int xPos;
-    private int yPos;
+    private float xPos;
+    private float yPos;
 
-    public Part(int xPos, int yPos) {
+    private float xPosEnd;
+    private float yPosEnd;
+
+    public Part(float xPos, float yPos, float xPosEnd, float yPosEnd) {
         this.xPos = xPos;
         this.yPos = yPos;
+        this.xPosEnd = xPosEnd;
+        this.yPosEnd = yPosEnd;
     }
 
-    public int getxPos() {
+    public float getxPos() {
         return xPos;
     }
 
-    public int getyPos() {
+    public float getyPos() {
         return yPos;
+    }
+
+    public float getxPosEnd() {
+        return xPosEnd;
+    }
+
+    public float getyPosEnd() {
+        return yPosEnd;
     }
 }

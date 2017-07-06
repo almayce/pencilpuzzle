@@ -1,76 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_centerInParent="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/menu_ad" />
+            android:src="@drawable/menu_ad_back" />
 
         <TextView
-            android:layout_alignParentBottom="true"
-            android:textStyle="bold"
-            android:layout_margin="8dp"
             android:id="@+id/tvTimer"
-            android:text="00:00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="26sp"/>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:text="00:00"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
-        <RelativeLayout
-            android:id="@+id/rlMenu"
-            android:layout_width="500dp"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            >
+        <ImageView
+            android:id="@+id/rlExit"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/menu_ad_iab_btn_back"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="10%" />
 
-            <RelativeLayout
-                android:id="@+id/rlExit"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                >
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/menu_ad_iab_title"
+            app:layout_heightPercent="20%"
+            app:layout_widthPercent="35%" />
 
-            </RelativeLayout>
+        <ImageView
+            android:id="@+id/rlAd1"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu_ad_iab_btn1"
+            app:layout_heightPercent="50%"
+            app:layout_marginLeftPercent="10%"
+            app:layout_widthPercent="40%" />
 
-            <RelativeLayout
-                android:layout_centerVertical="true"
-                android:id="@+id/rlAd1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_toStartOf="@+id/rlOrient"
-                android:layout_toLeftOf="@+id/rlOrient"
-                >
+        <ImageView
+            android:id="@+id/rlAd2"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu_ad_iab_btn2"
+            app:layout_heightPercent="50%"
+            app:layout_marginRightPercent="10%"
+            app:layout_widthPercent="40%" />
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rlOrient"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_centerInParent="true"
-                >
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/rlOrient"
-                android:layout_toEndOf="@+id/rlOrient"
-                android:id="@+id/rlAd2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                >
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-    </RelativeLayout>
+    </android.support.percent.PercentRelativeLayout>
 </layout>

@@ -58,7 +58,7 @@ public class SoundManager {
     private int wrong;
 
     public SoundManager(Context context) {
-        sp = new SoundPool(2, AudioManager.STREAM_MUSIC, 100);
+        sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 100);
         try {
             А = sp.load(context.getAssets().openFd("sounds/bukva_А.mp3"), 1);
             Б = sp.load(context.getAssets().openFd("sounds/bukva_Б.mp3"), 1);
@@ -108,51 +108,58 @@ public class SoundManager {
         }
     }
 
-    public void playSound(Sounds soundName) {
-        switch (soundName) {
-            case А: sp.play(А, 1, 1, 0, 0, 1); break;
-            case Б: sp.play(Б, 1, 1, 0, 0, 1); break;
-            case В: sp.play(В, 1, 1, 0, 0, 1); break;
-            case Г: sp.play(Г, 1, 1, 0, 0, 1); break;
-            case Д: sp.play(Д, 1, 1, 0, 0, 1); break;
-            case Е: sp.play(Е, 1, 1, 0, 0, 1); break;
-            case Ё: sp.play(Ё, 1, 1, 0, 0, 1); break;
-            case Ж: sp.play(Ж, 1, 1, 0, 0, 1); break;
-            case З: sp.play(З, 1, 1, 0, 0, 1); break;
-            case И: sp.play(И, 1, 1, 0, 0, 1); break;
-            case Й: sp.play(Й, 1, 1, 0, 0, 1); break;
-            case К: sp.play(К, 1, 1, 0, 0, 1); break;
-            case Л: sp.play(Л, 1, 1, 0, 0, 1); break;
-            case М: sp.play(М, 1, 1, 0, 0, 1); break;
-            case Н: sp.play(Н, 1, 1, 0, 0, 1); break;
-            case О: sp.play(О, 1, 1, 0, 0, 1); break;
-            case П: sp.play(П, 1, 1, 0, 0, 1); break;
-            case Р: sp.play(Р, 1, 1, 0, 0, 1); break;
-            case С: sp.play(С, 1, 1, 0, 0, 1); break;
-            case Т: sp.play(Т, 1, 1, 0, 0, 1); break;
-            case У: sp.play(У, 1, 1, 0, 0, 1); break;
-            case Ф: sp.play(Ф, 1, 1, 0, 0, 1); break;
-            case Х: sp.play(Х, 1, 1, 0, 0, 1); break;
-            case Ц: sp.play(Ц, 1, 1, 0, 0, 1); break;
-            case Ч: sp.play(Ч, 1, 1, 0, 0, 1); break;
-            case Ш: sp.play(Ш, 1, 1, 0, 0, 1); break;
-            case Щ: sp.play(Щ, 1, 1, 0, 0, 1); break;
-            case Ъ: sp.play(Ъ, 1, 1, 0, 0, 1); break;
-            case Ы: sp.play(Ы, 1, 1, 0, 0, 1); break;
-            case Ь: sp.play(Ь, 1, 1, 0, 0, 1); break;
-            case Э: sp.play(Э, 1, 1, 0, 0, 1); break;
-            case Ю: sp.play(Ю, 1, 1, 0, 0, 1); break;
-            case Я: sp.play(Я, 1, 1, 0, 0, 1); break;
+    public void playSound(String name) {
+        switch (name) {
+            case "А": sp.play(А, 1, 1, 0, 0, 1); break;
+            case "Б": sp.play(Б, 1, 1, 0, 0, 1); break;
+            case "В": sp.play(В, 1, 1, 0, 0, 1); break;
+            case "Г": sp.play(Г, 1, 1, 0, 0, 1); break;
+            case "Д": sp.play(Д, 1, 1, 0, 0, 1); break;
+            case "Е": sp.play(Е, 1, 1, 0, 0, 1); break;
+            case "Ё": sp.play(Ё, 1, 1, 0, 0, 1); break;
+            case "Ж": sp.play(Ж, 1, 1, 0, 0, 1); break;
+            case "З": sp.play(З, 1, 1, 0, 0, 1); break;
+            case "И": sp.play(И, 1, 1, 0, 0, 1); break;
+            case "Й": sp.play(Й, 1, 1, 0, 0, 1); break;
+            case "К": sp.play(К, 1, 1, 0, 0, 1); break;
+            case "Л": sp.play(Л, 1, 1, 0, 0, 1); break;
+            case "М": sp.play(М, 1, 1, 0, 0, 1); break;
+            case "Н": sp.play(Н, 1, 1, 0, 0, 1); break;
+            case "О": sp.play(О, 1, 1, 0, 0, 1); break;
+            case "П": sp.play(П, 1, 1, 0, 0, 1); break;
+            case "Р": sp.play(Р, 1, 1, 0, 0, 1); break;
+            case "С": sp.play(С, 1, 1, 0, 0, 1); break;
+            case "Т": sp.play(Т, 1, 1, 0, 0, 1); break;
+            case "У": sp.play(У, 1, 1, 0, 0, 1); break;
+            case "Ф": sp.play(Ф, 1, 1, 0, 0, 1); break;
+            case "Х": sp.play(Х, 1, 1, 0, 0, 1); break;
+            case "Ц": sp.play(Ц, 1, 1, 0, 0, 1); break;
+            case "Ч": sp.play(Ч, 1, 1, 0, 0, 1); break;
+            case "Ш": sp.play(Ш, 1, 1, 0, 0, 1); break;
+            case "Щ": sp.play(Щ, 1, 1, 0, 0, 1); break;
+            case "Ъ": sp.play(Ъ, 1, 1, 0, 0, 1); break;
+            case "Ы": sp.play(Ы, 1, 1, 0, 0, 1); break;
+            case "Ь": sp.play(Ь, 1, 1, 0, 0, 1); break;
+            case "Э": sp.play(Э, 1, 1, 0, 0, 1); break;
+            case "Ю": sp.play(Ю, 1, 1, 0, 0, 1); break;
+            case "Я": sp.play(Я, 1, 1, 0, 0, 1); break;
 
-            case click: sp.play(click, 1, 1, 0, 0, 1); break;
-            case neutral: sp.play(neutral, 1, 1, 0, 0, 1); break;
-            case correctly: sp.play(correctly, 1, 1, 0, 0, 1); break;
-            case try_again: sp.play(try_again, 1, 1, 0, 0, 1); break;
-            case voice_pencil: sp.play(voice_pencil, 1, 1, 0, 0, 1); break;
-            case well_done: sp.play(well_done, 1, 1, 0, 0, 1); break;
-            case well_done_voice1: sp.play(well_done_voice1, 1, 1, 0, 0, 1); break;
-            case wrong: sp.play(wrong, 1, 1, 0, 0, 1); break;
+            case "click": sp.play(click, 1, 1, 0, 0, 1); break;
+            case "neutral": sp.play(neutral, 1, 1, 0, 0, 1); break;
+            case "correctly": sp.play(correctly, 1, 1, 0, 0, 1); break;
+            case "try_again": sp.play(try_again, 1, 1, 0, 0, 1); break;
+            case "voice_pencil": sp.play(voice_pencil, 1, 1, 0, 0, 1); break;
+            case "well_done": sp.play(well_done, 1, 1, 0, 0, 1); break;
+            case "well_done_voice1": sp.play(well_done_voice1, 1, 1, 0, 0, 1); break;
+            case "wrong": sp.play(wrong, 1, 1, 0, 0, 1); break;
         }
+    }
 
+    public void stopSound() {
+        sp.stop(1);
+        sp.stop(2);
+        sp.stop(3);
+        sp.stop(4);
+        sp.stop(5);
     }
 }

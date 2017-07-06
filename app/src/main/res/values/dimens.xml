@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="star_size" type="dimen">30%</item>
+    <item name="margin_item" type="dimen">10%</item>
+    <item name="exit_btn_size" type="dimen">10%</item>
+    <item name="exit_btn_margin" type="dimen">2%</item>
+</resources>

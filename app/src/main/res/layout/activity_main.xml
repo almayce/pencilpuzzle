@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--app:layout_widthPercent="50%"--><!--app:layout_heightPercent="50%"--><!--app:layout_marginTopPercent="25%"--><!--app:layout_marginLeftPercent="25%"-->
+
+<layout
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="bool"
+            type="Boolean"/>
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="appwork.almayce.pencilpuzzle.view.MainActivity">
+        android:layout_height="match_parent">
 
         <ImageView
             android:layout_width="match_parent"
@@ -15,67 +24,96 @@
             android:scaleType="centerCrop"
             android:src="@drawable/mainbackground" />
 
-        <RelativeLayout
-            android:id="@+id/rlMain"
+        <android.support.percent.PercentRelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true">
-
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/ivPlayGround"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/mainfront2"/>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitEnd"
+                android:src="@drawable/dude"
+                app:layout_heightPercent="35%"
+                app:layout_widthPercent="35%"/>
+
+        </android.support.percent.PercentRelativeLayout>
+
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <RelativeLayout
-                android:id="@+id/rlMenuGround"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/llPlayGround">
+                app:layout_heightPercent="15%">
 
-                <RelativeLayout
-                    android:id="@+id/rlMenu"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                </RelativeLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ifolica" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/title" />
+
+                    <ImageView
+                        android:id="@+id/ivMenu"
+                        android:contentDescription="menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:src="@drawable/menu_button" />
+
+                </TableRow>
 
             </RelativeLayout>
 
             <LinearLayout
-                android:translationX="-5dp"
-                android:id="@+id/llPlayGround"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="match_parent"
                 android:layout_centerInParent="true"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_heightPercent="60%">
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl11"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.97">
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/iv11"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="А"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv11"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs11"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="А"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl12"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -83,14 +121,25 @@
 
                         <ImageView
                             android:id="@+id/iv12"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ф"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv12"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs12"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ф"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl13"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -98,14 +147,25 @@
 
                         <ImageView
                             android:id="@+id/iv13"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Д"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv13"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs13"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Д"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl14"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -113,14 +173,25 @@
 
                         <ImageView
                             android:id="@+id/iv14"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="З"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv14"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs14"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="З"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl15"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -128,14 +199,25 @@
 
                         <ImageView
                             android:id="@+id/iv15"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="С"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv15"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs15"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="С"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl16"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -143,14 +225,25 @@
 
                         <ImageView
                             android:id="@+id/iv16"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Е"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv16"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs16"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Е"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl17"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -158,14 +251,25 @@
 
                         <ImageView
                             android:id="@+id/iv17"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ж"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv17"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs17"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ж"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl18"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -173,14 +277,25 @@
 
                         <ImageView
                             android:id="@+id/iv18"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ь"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv18"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs18"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ь"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl19"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -188,12 +303,23 @@
 
                         <ImageView
                             android:id="@+id/iv19"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ъ"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv19"
+                            ads:layout_marginPercent="@dimen/margin_item" />
 
-                    </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/ivs19"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ъ"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
                 </TableRow>
 
@@ -202,23 +328,33 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl21"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.97">
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/iv21"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="У"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv21"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs21"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="У"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl22"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -226,14 +362,25 @@
 
                         <ImageView
                             android:id="@+id/iv22"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="В"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv22"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs22"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="В"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl23"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -241,14 +388,25 @@
 
                         <ImageView
                             android:id="@+id/iv23"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Т"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv23"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs23"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Т"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl24"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -256,14 +414,25 @@
 
                         <ImageView
                             android:id="@+id/iv24"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Х"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv24"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs24"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Х"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl25"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -271,14 +440,25 @@
 
                         <ImageView
                             android:id="@+id/iv25"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Л"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv25"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs25"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Л"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl26"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -286,14 +466,25 @@
 
                         <ImageView
                             android:id="@+id/iv26"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Я"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv26"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs26"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Я"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl27"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -301,14 +492,25 @@
 
                         <ImageView
                             android:id="@+id/iv27"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ё"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv27"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs27"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ё"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl28"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -316,14 +518,25 @@
 
                         <ImageView
                             android:id="@+id/iv28"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Щ"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv28"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs28"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Щ"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl29"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -331,12 +544,20 @@
 
                         <ImageView
                             android:id="@+id/iv29"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/iv29"
+                            ads:layout_marginPercent="@dimen/margin_item" />
 
-                    </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/ivs29"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:visibility="invisible"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
                 </TableRow>
 
@@ -345,23 +566,33 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl31"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.97">
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/iv31"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="М"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv31"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs31"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="М"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl32"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -369,14 +600,25 @@
 
                         <ImageView
                             android:id="@+id/iv32"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="О"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv32"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs32"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="О"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl33"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -384,14 +626,25 @@
 
                         <ImageView
                             android:id="@+id/iv33"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Н"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv33"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs33"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Н"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl34"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -399,14 +652,25 @@
 
                         <ImageView
                             android:id="@+id/iv34"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ы"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv34"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs34"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ы"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl35"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -414,14 +678,25 @@
 
                         <ImageView
                             android:id="@+id/iv35"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Р"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv35"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs35"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Р"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl36"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -429,14 +704,25 @@
 
                         <ImageView
                             android:id="@+id/iv36"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Э"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv36"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs36"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Э"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl37"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -444,14 +730,25 @@
 
                         <ImageView
                             android:id="@+id/iv37"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ч"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv37"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs37"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ч"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl38"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -459,14 +756,25 @@
 
                         <ImageView
                             android:id="@+id/iv38"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ш"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv38"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs38"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ш"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl39"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -474,12 +782,20 @@
 
                         <ImageView
                             android:id="@+id/iv39"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/iv39"
+                            ads:layout_marginPercent="@dimen/margin_item" />
 
-                    </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/ivs39"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:visibility="invisible"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
                 </TableRow>
 
@@ -488,23 +804,33 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl41"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.97">
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/iv41"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="П"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv41"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs41"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="П"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl42"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -512,14 +838,25 @@
 
                         <ImageView
                             android:id="@+id/iv42"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Б"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv42"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs42"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Б"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl43"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -527,14 +864,25 @@
 
                         <ImageView
                             android:id="@+id/iv43"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Г"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv43"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs43"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Г"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl44"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -542,14 +890,25 @@
 
                         <ImageView
                             android:id="@+id/iv44"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="К"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv44"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs44"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="К"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl45"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -557,14 +916,25 @@
 
                         <ImageView
                             android:id="@+id/iv45"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="И"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv45"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs45"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="И"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl46"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -572,14 +942,25 @@
 
                         <ImageView
                             android:id="@+id/iv46"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Й"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv46"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs46"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Й"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl47"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -587,14 +968,25 @@
 
                         <ImageView
                             android:id="@+id/iv47"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ю"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv47"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs47"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ю"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl48"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -602,14 +994,25 @@
 
                         <ImageView
                             android:id="@+id/iv48"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Ц"
+                            android:onClick="onItemClick"
+                            android:src="@drawable/iv48"
+                            ads:layout_marginPercent="@dimen/margin_item" />
+
+                        <ImageView
+                            android:id="@+id/ivs48"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:contentDescription="Ц"
+                            android:visibility="@{bool}"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <android.support.percent.PercentRelativeLayout
                         android:id="@+id/rl49"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -617,21 +1020,49 @@
 
                         <ImageView
                             android:id="@+id/iv49"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ads:layout_marginPercent="@dimen/margin_item" />
 
-                    </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/ivs49"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/star"
+                            android:visibility="invisible"
+                            ads:layout_heightPercent="@dimen/star_size"
+                            ads:layout_widthPercent="@dimen/star_size" />
+                    </android.support.percent.PercentRelativeLayout>
+
                 </TableRow>
+
+
             </LinearLayout>
-        </RelativeLayout>
+
+            <android.support.percent.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                app:layout_heightPercent="20%">
+
+                <ImageView
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/footer"
+                    app:layout_widthPercent="75%"
+                    android:layout_height="wrap_content"
+                    />
+
+            </android.support.percent.PercentRelativeLayout>
+
+
+        </android.support.percent.PercentRelativeLayout>
+
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"/>
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
+
 </layout>

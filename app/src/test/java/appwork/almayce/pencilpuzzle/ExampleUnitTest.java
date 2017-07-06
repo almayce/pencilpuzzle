@@ -14,4 +14,10 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void getScale() {
+        float a = 2550 / (1980 / 100);
+        System.out.println(a/100);
+    }
 }

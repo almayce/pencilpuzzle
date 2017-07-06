@@ -10,4 +10,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class)
 public interface AdView extends MvpView {
+    void checkTimer(String timerText);
 }
