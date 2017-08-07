@@ -37,6 +37,16 @@
                 app:layout_heightPercent="35%"
                 app:layout_widthPercent="35%"/>
 
+            <ImageView
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/mainfront"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
         </android.support.percent.PercentRelativeLayout>
 
 
@@ -54,22 +64,22 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:src="@drawable/ifolica" />
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:src="@drawable/title" />
 
                     <ImageView
                         android:id="@+id/ivMenu"
-                        android:contentDescription="menu"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1.5"
+                        android:contentDescription="menu"
                         android:src="@drawable/menu_button" />
 
                 </TableRow>
@@ -1045,11 +1055,10 @@
                 app:layout_heightPercent="20%">
 
                 <ImageView
+                    android:layout_height="match_parent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/footer"
-                    app:layout_widthPercent="75%"
-                    android:layout_height="wrap_content"
-                    />
+                    app:layout_widthPercent="75%" />
 
             </android.support.percent.PercentRelativeLayout>
 

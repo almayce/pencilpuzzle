@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:src="@drawable/menu_ad_back" />
 
         <TextView
@@ -30,6 +30,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/menu_ad_iab_btn_back"
+            app:layout_marginTopPercent="2%"
+            app:layout_marginRightPercent="6%"
             app:layout_heightPercent="10%"
             app:layout_widthPercent="10%" />
 

@@ -3,10 +3,12 @@ package appwork.almayce.pencilpuzzle.presenter;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import appwork.almayce.pencilpuzzle.App;
 import appwork.almayce.pencilpuzzle.SchedulersTransformer;
+import appwork.almayce.pencilpuzzle.model.item.Markers;
 import appwork.almayce.pencilpuzzle.view.CharView;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
@@ -18,6 +20,7 @@ import io.reactivex.disposables.Disposable;
 public class CharPresenter extends MvpPresenter<CharView> {
 
     private Disposable disposable;
+    private Markers markers = new Markers();
 
     public void onDone() {
         App.isDone = true;
@@ -35,6 +38,17 @@ public class CharPresenter extends MvpPresenter<CharView> {
                     if (App.isCancelled || aLong > 3000)
                         disposable.dispose();
                 });
+    }
+
+    public void addMarkers(String name) {
+        List<Integer> markersArray = markers.getMarkers(name);
+        Observable.range(0, markersArray.size())
+                .compose(new SchedulersTransformer<>())
+                .subscribe(integer -> {
+                    getViewState().addMarker(markersArray.get(integer));
+                });
+
+
     }
 
     public void playSound(String name) {

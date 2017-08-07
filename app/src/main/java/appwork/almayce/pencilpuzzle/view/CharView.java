@@ -13,4 +13,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface CharView extends MvpView {
     void restartActivity();
     void backToMainActivity();
+    void addMarker(int id);
 }

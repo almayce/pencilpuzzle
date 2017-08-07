@@ -195,6 +195,7 @@ public class App extends Application implements RewardedVideoAdListener {
 
     public static void playSound(String name) {
         int streamId = sp.play(soundMap.get(name), 1, 1, 0, 0, 1);
+
         streamIdList.add(streamId);
     }
 

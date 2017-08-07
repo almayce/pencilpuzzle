@@ -12,6 +12,9 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import appwork.almayce.pencilpuzzle.AdManager;
 import appwork.almayce.pencilpuzzle.App;
 import appwork.almayce.pencilpuzzle.R;
@@ -30,13 +33,15 @@ public class CharActivity extends MvpAppCompatActivity implements CharView {
 
     private int counter = 0;
     private ImageView ivChar;
+    private List<Integer> markers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         App.hideSystemUI(getWindow());
-        int layoutId = R.layout.activity_char_11;
-
+        int layoutId = 0;
+        markers = new ArrayList<>();
         String name = getIntent().getStringExtra("name");
         switch (name) {
             case "А":
@@ -142,12 +147,18 @@ public class CharActivity extends MvpAppCompatActivity implements CharView {
                 layoutId = R.layout.activity_char_48;
                 break;
         }
+
+        charPresenter.addMarkers(name);
         setContentView(layoutId);
-        findViewById(R.id.iv1).setOnTouchListener(onTouchListener);
-        findViewById(R.id.iv2).setOnTouchListener(onTouchListener);
-        findViewById(R.id.iv3).setOnTouchListener(onTouchListener);
-        findViewById(R.id.iv4).setOnTouchListener(onTouchListener);
-        findViewById(R.id.iv5).setOnTouchListener(onTouchListener);
+        try {
+            findViewById(R.id.iv1).setOnTouchListener(onTouchListener);
+            findViewById(R.id.iv2).setOnTouchListener(onTouchListener);
+            findViewById(R.id.iv3).setOnTouchListener(onTouchListener);
+            findViewById(R.id.iv4).setOnTouchListener(onTouchListener);
+            findViewById(R.id.iv5).setOnTouchListener(onTouchListener);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         ivChar = (ImageView) findViewById(R.id.ivChar);
         counter = Integer.valueOf(ivChar.getContentDescription().toString());
 
@@ -208,37 +219,46 @@ public class CharActivity extends MvpAppCompatActivity implements CharView {
 
                     float x = view.getX() + view.getWidth() / 2;
                     float y = view.getY() + view.getHeight() / 2;
+                    float correctX = 0;
+                    float correctY = 0;
+                    int currentMarkerIndex = 0;
 
-                    float correctX = ivChar.getX() + ivChar.getWidth() / 2;
-                    float correctY = ivChar.getY() + ivChar.getHeight() / 2;
+                    for (int o = 0; o < markers.size(); o++) {
 
-                    System.out.println(x + " " + correctX);
-                    System.out.println(y + " " + correctY);
-
+                        ImageView marker = (ImageView) findViewById(markers.get(o));
+                        if (marker.getContentDescription().toString().equals(view.getContentDescription().toString())) {
+                            correctX = marker.getX() + marker.getWidth() / 2;
+                            correctY = marker.getY() + marker.getHeight() / 2;
+                            currentMarkerIndex = o;
+                        }
+                    }
 
                     if (x > correctX - tolerance && x < correctX + tolerance)
                         doneX = true;
                     if (y > correctY - tolerance && y < correctY + tolerance)
                         doneY = true;
+
                     if (doneX && doneY) {
 
                         view.setX(correctX - view.getWidth() / 2);
                         view.setY(correctY - view.getHeight() / 2);
 
                         charPresenter.playSound("correctly");
-                        counter--;
                         view.setOnTouchListener(null);
-//
-                        if (counter == 0) {
+                        markers.remove(currentMarkerIndex);
+
+                        if (markers.size() == 0) {
                             App.getProgressManagerInstance().saveProgress(getIntent().getStringExtra("name"));
                             charPresenter.onDone();
                         }
+                        break;
 
-                    } else {
+                    } else  {
                         charPresenter.playSound("wrong");
                         view.setX(startX);
                         view.setY(startY);
                     }
+
 
                 default:
                     return false;
@@ -259,6 +279,11 @@ public class CharActivity extends MvpAppCompatActivity implements CharView {
     public void backToMainActivity() {
         charPresenter.playSound("neutral");
         showAd();
+    }
+
+    @Override
+    public void addMarker(int id) {
+        markers.add(id);
     }
 
     public void showAd() {

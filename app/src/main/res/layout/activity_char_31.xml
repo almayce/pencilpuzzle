@@ -1,89 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.percent.PercentRelativeLayout
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/itembackground" />
-
-    <android.support.percent.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/ivChar"
+            android:scaleType="centerCrop"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/itembackground"/>
+
+        <android.support.percent.PercentRelativeLayout
             android:layout_centerInParent="true"
-            android:contentDescription="4"
-            android:src="@drawable/ch31"
-            app:layout_heightPercent="65%" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:contentDescription="4"
+                android:id="@+id/ivChar"
+                android:scaleType="fitXY"
+                android:src="@drawable/ch31"
+                app:layout_heightPercent="65%"
+                android:layout_centerInParent="true"
+                app:layout_widthPercent="44%"
+                />
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/pt1"
+                android:contentDescription="1"
+                android:src="@drawable/ch31_1"
+                app:layout_marginTopPercent="26%"
+                app:layout_marginLeftPercent="33%"
+                app:layout_heightPercent="48%"
+                app:layout_widthPercent="8%"
+                />
+
+            <ImageView
+                android:visibility="invisible"
+                app:layout_marginTopPercent="26%"
+                app:layout_marginLeftPercent="59%"
+                android:id="@+id/pt2"
+                android:contentDescription="2"
+                android:src="@drawable/ch31_2"
+                app:layout_heightPercent="48%"
+                app:layout_widthPercent="8%"
+                />
+            <ImageView
+                android:visibility="invisible"
+                app:layout_marginTopPercent="26%"
+                android:id="@+id/pt3"
+                android:contentDescription="3"
+                app:layout_marginLeftPercent="47.5%"
+                android:src="@drawable/ch31_3"
+                app:layout_heightPercent="48%"
+                app:layout_widthPercent="15%"
+                />
+            <ImageView
+                android:visibility="invisible"
+                app:layout_marginTopPercent="25.5%"
+                app:layout_marginLeftPercent="37%"
+                android:id="@+id/pt4"
+                android:contentDescription="4"
+                android:src="@drawable/ch31_4"
+                app:layout_heightPercent="48%"
+                app:layout_widthPercent="15%"
+                />
+
+            <ImageView
+                app:layout_marginTopPercent="28%"
+                android:layout_toLeftOf="@id/ivChar"
+                android:id="@+id/iv1"
+                android:scaleType="fitXY"
+
+                android:contentDescription="1"
+                android:src="@drawable/ch31_1"
+                app:layout_heightPercent="48%"
+                app:layout_widthPercent="6%"
+                />
+
+            <ImageView
+                app:layout_marginTopPercent="28%"
+                android:layout_toLeftOf="@id/iv1"
+                android:id="@+id/iv2"
+                android:scaleType="fitXY"
+
+                android:contentDescription="2"
+                android:src="@drawable/ch31_2"
+                app:layout_heightPercent="48%"
+                app:layout_widthPercent="6%"
+                />
+            <ImageView
+                app:layout_marginTopPercent="28%"
+                android:layout_toRightOf="@id/ivChar"
+                android:id="@+id/iv3"
+                android:scaleType="fitXY"
+
+                android:contentDescription="3"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ch31_3"
+                app:layout_heightPercent="48%"
+                app:layout_widthPercent="12%"
+                />
+            <ImageView
+                android:layout_toRightOf="@id/iv3"
+                android:id="@+id/iv4"
+                android:scaleType="fitXY"
+
+                android:contentDescription="4"
+                app:layout_marginTopPercent="28%"
+
+                android:src="@drawable/ch31_4"
+                app:layout_heightPercent="48%"
+                app:layout_widthPercent="12%"
+                />
+
+            <ImageView
+                android:src="@drawable/exit"
+                android:id="@+id/ivExit"
+                app:layout_marginPercent="@dimen/exit_btn_margin"
+                app:layout_widthPercent="@dimen/exit_btn_size"
+                app:layout_heightPercent="@dimen/exit_btn_size" />
+
+            <com.google.android.gms.ads.AdView
+                android:layout_alignParentBottom="true"
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/banner_ad_unit_id">
+            </com.google.android.gms.ads.AdView>
+
+        </android.support.percent.PercentRelativeLayout>
     </android.support.percent.PercentRelativeLayout>
-
-    <android.support.percent.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true">
-
-        <ImageView
-            android:id="@+id/iv1"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ch31_1"
-            app:layout_heightPercent="65%"
-            app:layout_widthPercent="50%" />
-
-        <ImageView
-            android:id="@+id/iv2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ch31_2"
-            app:layout_heightPercent="65%"
-            app:layout_widthPercent="50%" />
-
-        <ImageView
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/iv3"
-            android:src="@drawable/ch31_4"
-            app:layout_heightPercent="65%"
-            app:layout_widthPercent="50%" />
-
-        <ImageView
-            android:layout_alignParentBottom="true"
-            android:id="@+id/iv4"
-            android:src="@drawable/ch31_3"
-            app:layout_heightPercent="65%"
-            app:layout_widthPercent="50%" />
-
-        <ImageView
-            android:id="@+id/iv5"
-            android:visibility="invisible"
-            app:layout_heightPercent="65%"
-            app:layout_widthPercent="50%" />
-
-        <ImageView
-            android:src="@drawable/exit"
-            android:id="@+id/ivExit"
-            app:layout_marginPercent="@dimen/exit_btn_margin"
-            app:layout_widthPercent="@dimen/exit_btn_size"
-            app:layout_heightPercent="@dimen/exit_btn_size" />
-
-        <com.google.android.gms.ads.AdView
-            android:layout_alignParentBottom="true"
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id">
-        </com.google.android.gms.ads.AdView>
-
-    </android.support.percent.PercentRelativeLayout>
-</android.support.percent.PercentRelativeLayout>
